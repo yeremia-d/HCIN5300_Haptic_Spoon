@@ -7,7 +7,7 @@ Haptic Spoon Project for HCIN5300
 * Arduino Wire
 
 # Processing Libraries
-*Serial
+* Serial
 
 # Directory structure
 * haptic_spoon.ino - Arduino Program that runs the hardware
