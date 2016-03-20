@@ -4,8 +4,23 @@ import processing.serial.*;
 // Serial Port Instance
 Serial serialPort;
 
-// UI Buttons
-Button cold_1, cold_2, warm_1, warm_2, hot_1, hot_2, stop;
+//Intensity                        FREQUENCY
+//                        LOW        MEDIUM          HIGH
+// LOW                    FLIL        FMIL           FHIL
+// 
+// MEDIUM                 FLIM        FMIM           FHIM 
+//
+// HIGH                   FLIH        FMIH           FHIH
+
+
+// UI Buttons [frequency, intensity FLIL, FM]
+Button b_flil, b_fmil, b_fhil,
+       b_flim, b_fmim, b_fhim,
+       b_flih, b_fmih, b_fhih,
+       b_stop;
+
+int button_grp_x = 75;
+int button_grp_y = 100;
 
 // Font
 PFont font;
@@ -17,7 +32,7 @@ boolean hardwareReady;
 void setup() {
   
   // Initialize window
-  size(750, 750);
+  size(750, 500);
   
   // Initialize font
   font = createFont("Arial", 200, true);
@@ -25,14 +40,21 @@ void setup() {
   // Set Harware ready state to false
   hardwareReady = false;
   
+  
   // Initialize buttons
-  cold_1 = new Button(100, 25, color(0, 100, 120), "Cold 1", font);
-  cold_2 = new Button(cold_1.x, (cold_1.y + cold_1.buttonHeight + 25), color(0, 150, 180)  , "Cold 2", font);
-  warm_1 = new Button(cold_1.x, (cold_2.y + cold_2.buttonHeight + 25), color(242, 188, 70) , "Warm 1", font);
-  warm_2 = new Button(cold_1.x, (warm_1.y + warm_1.buttonHeight + 25), color(214, 150, 14) , "Warm 2", font);
-  hot_1  = new Button(cold_1.x, (warm_2.y + warm_2.buttonHeight + 25), color(200, 50, 1)   , "Hot 1" , font);
-  hot_2  = new Button(cold_1.x, (hot_1.y + hot_1.buttonHeight + 25)  , color(255, 50, 1)   , "Hot 2" , font);
-  stop   = new Button(cold_1.x, (hot_2.y + hot_2.buttonHeight + 25)  , color(157, 162, 163), "Stop"  , font);
+  b_flil = new Button(button_grp_x, button_grp_y, "Low Freq, Low Intensity", font);
+  b_fmil = new Button(button_grp_x + 210, button_grp_y, "Med Freq, Low Intensity", font);
+  b_fhil = new Button(button_grp_x + 420, button_grp_y, "High Freq, Low Intensity", font);
+  
+  b_flim = new Button(button_grp_x, button_grp_y + 85, "Low Freq, Med Intensity", font);
+  b_fmim = new Button(button_grp_x + 210, button_grp_y + 85, "Med Freq, Med Intensity", font);
+  b_fhim = new Button(button_grp_x + 420, button_grp_y + 85, "High Freq, Med Intensity", font);
+  
+  b_flih = new Button(button_grp_x, button_grp_y + 170, "Low Freq, High Intensity", font);
+  b_fmih = new Button(button_grp_x + 210, button_grp_y + 170, "Med Freq, High Intensity", font);
+  b_fhih = new Button(button_grp_x + 420, button_grp_y + 170, "High Freq, High Intensity", font);
+  
+  b_stop = new Button(button_grp_x + 210, button_grp_y + 255, "Stop", font);
   
   // Initialize Serial Port
   serialPort = new Serial(this, Serial.list()[1], 9600); 
@@ -44,43 +66,51 @@ void draw() {
   // Redraw button
   background(0);
   
-  //fill(color(255));
-  //textFont(font, 24);
-  //text("Hardware Status:", 500,50);
-  
-  //if(hardwareReady) {
-  //  textFont(font, 50);
-  //  fill(color(0, 155, 0));
-  //  text("Ready", 300, 25);
-  //}
-  
   // Update button states
-  cold_1.update();
-  cold_2.update();
-  warm_1.update();
-  warm_2.update();
-  hot_1.update();
-  hot_2.update();
-  stop.update();
+  b_flil.update();
+  b_fmil.update();
+  b_fhil.update();
+  
+  b_flim.update();
+  b_fmim.update();
+  b_fhim.update();
+  
+  b_flih.update();
+  b_fmih.update();
+  b_fhih.update();
+  
+  b_stop.update();
   
   // Draw buttons
-  cold_1.drawButton();
-  cold_2.drawButton();
-  warm_1.drawButton();
-  warm_2.drawButton();
-  hot_1.drawButton();
-  hot_2.drawButton();
-  stop.drawButton();
+  b_flil.drawButton();
+  b_fmil.drawButton();
+  b_fhil.drawButton();
+  
+  b_flim.drawButton();
+  b_fmim.drawButton();
+  b_fhim.drawButton();
+  
+  b_flih.drawButton();
+  b_fmih.drawButton();
+  b_fhih.drawButton();
+  
+  b_stop.drawButton();
+
 }
 
 // Mouse pressed listener.
 void mousePressed() {
-  if(cold_1.isOver()) serialPort.write("5");
-  if(cold_2.isOver()) serialPort.write("6");
-  if(warm_1.isOver()) serialPort.write("3");
-  if(warm_2.isOver()) serialPort.write("4");
-  if(hot_1.isOver()) serialPort.write("1");
-  if(hot_2.isOver()) serialPort.write("2");
-  if(stop.isOver()) serialPort.write(0);
+  if(b_flil.isOver()) serialPort.write("1");
+  if(b_fmil.isOver()) serialPort.write("2");
+  if(b_fhil.isOver()) serialPort.write("3");
+  
+  if(b_flim.isOver()) serialPort.write("4");
+  if(b_fmim.isOver()) serialPort.write("5");
+  if(b_fhim.isOver()) serialPort.write("6");
+  
+  if(b_flih.isOver()) serialPort.write("7");
+  if(b_fmih.isOver()) serialPort.write("8");
+  if(b_fhih.isOver()) serialPort.write("9");
+  
+  if(b_stop.isOver()) serialPort.write("0");
 }
-
