@@ -16,13 +16,13 @@ class Button {
   boolean hover;
   
   // Button constructor
-  Button(int x, int y, color buttonColor, String buttonText, PFont font) {
+  Button(int x, int y, String buttonText, PFont font) {
     this.x           = x;
     this.y           = y;
-    this.buttonColor = buttonColor;
+    this.buttonColor = color(255, 255, 255);
     this.buttonText  = buttonText;
     this.font        = font;
-    buttonWidth      = 300;
+    buttonWidth      = 200;
     buttonHeight     = 75;
     hover            = false;
   }
@@ -32,23 +32,22 @@ class Button {
     // Set button stroke
     stroke(0);
     
-    // change stroke color if button state is hovered
-    if(hover) stroke(255);
-    
     // set fill color
-    fill(buttonColor);
+    if(hover) {fill(color(25, 163, 209)); }
+    else { fill(buttonColor); }
     
     // draw rectangle
     rect(x, y, buttonWidth, buttonHeight);
     
     // set text fill
-    fill(255);
+    if(hover) {fill(color(255));}
+    else { fill(color(0)); }
     
     // set font
-    textFont(font, 24);
+    textFont(font, 14);
     
     // draw text
-    text(buttonText, x + 20, y + (buttonHeight/2)+7);
+    text(buttonText, x + 25, y + (buttonHeight/2)+7);
   }
   
   // update button function
