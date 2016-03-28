@@ -42,17 +42,17 @@ void setup() {
   
   
   // Initialize buttons
-  b_flil = new Button(button_grp_x, button_grp_y, "Low Freq, Low Intensity", font);
-  b_fmil = new Button(button_grp_x + 210, button_grp_y, "Med Freq, Low Intensity", font);
-  b_fhil = new Button(button_grp_x + 420, button_grp_y, "High Freq, Low Intensity", font);
+  b_flil = new Button(button_grp_x, button_grp_y, "Low Freq, Low Intensity \n                 (1)", font);
+  b_fmil = new Button(button_grp_x + 210, button_grp_y, "Med Freq, Low Intensity \n                 (2)", font);
+  b_fhil = new Button(button_grp_x + 420, button_grp_y, "High Freq, Low Intensity \n                 (3)", font);
   
-  b_flim = new Button(button_grp_x, button_grp_y + 85, "Low Freq, Med Intensity", font);
-  b_fmim = new Button(button_grp_x + 210, button_grp_y + 85, "Med Freq, Med Intensity", font);
-  b_fhim = new Button(button_grp_x + 420, button_grp_y + 85, "High Freq, Med Intensity", font);
+  b_flim = new Button(button_grp_x, button_grp_y + 85, "Low Freq, Med Intensity \n                 (4)", font);
+  b_fmim = new Button(button_grp_x + 210, button_grp_y + 85, "Med Freq, Med Intensity \n                 (5)", font);
+  b_fhim = new Button(button_grp_x + 420, button_grp_y + 85, "High Freq, Med Intensity \n                 (6)", font);
   
-  b_flih = new Button(button_grp_x, button_grp_y + 170, "Low Freq, High Intensity", font);
-  b_fmih = new Button(button_grp_x + 210, button_grp_y + 170, "Med Freq, High Intensity", font);
-  b_fhih = new Button(button_grp_x + 420, button_grp_y + 170, "High Freq, High Intensity", font);
+  b_flih = new Button(button_grp_x, button_grp_y + 170, "Low Freq, High Intensity \n                 (7)", font);
+  b_fmih = new Button(button_grp_x + 210, button_grp_y + 170, "Med Freq, High Intensity \n                 (8)", font);
+  b_fhih = new Button(button_grp_x + 420, button_grp_y + 170, "High Freq, High Intensity \n                 (9)", font);
   
   b_stop = new Button(button_grp_x + 210, button_grp_y + 255, "Stop", font);
   

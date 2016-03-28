@@ -26,19 +26,23 @@ void loop() {
 
     // set appropriate mode parameters
     setMode(mode);
-  }
-  
-  // play pattern
-  playPattern();
 
+    // play pattern
+    playPattern(5);
+  }
 }
 
-void playPattern()
+void playPattern(int numTimes)
 {
-  drv.setRealtimeValue(beat_intensity);
-  delay(beat_length);
+  // Play specified number of beats
+  for(int i = 0; i < numTimes; i++) {
+    drv.setRealtimeValue(beat_intensity);
+    delay(beat_length);
+    drv.setRealtimeValue(beat_0);
+    delay(beat_delay);
+  }
+  // Set beats to off
   drv.setRealtimeValue(beat_0);
-  delay(beat_delay);
 }
 
 void setMode(int mode) {

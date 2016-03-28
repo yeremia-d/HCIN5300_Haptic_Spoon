@@ -47,7 +47,7 @@ class Button {
     textFont(font, 14);
     
     // draw text
-    text(buttonText, x + 25, y + (buttonHeight/2)+7);
+    text(buttonText, x + 25, y + (buttonHeight/2));
   }
   
   // update button function
